@@ -1,27 +1,27 @@
-# KendoUiCdkPortalIssue
+# Kendo UI popup elements issue
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.9.
+This is sample project to show the issue with showing popup elements when using Kendo UI for Angular and CDK Portal.
 
-## Development server
+The popup elements was created and appended to the body element from original window instead of the popup window's body element. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+When hovering on menu or "Close" button, the tooltip, sub menu items was rendered in wrong place.
 
-## Code scaffolding
+## Start the application
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm i` to install dependences.
+Run `npm run start` for a dev server, then navigate to `http://localhost:4200/`
 
-## Build
+## Steps to reproduce the issue
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Opening the application at `http://localhost:4200/`
+On start page, we have a button "Open the portal", hovering on this button, tooltip displayed properly.
+Click "Open the portal" button, new window appears.
+Hovering on menu in the new window, sub menu items are rendered on the main window instead of the current window which hosts the kendo menu component.
+Hovering on "Close" button, tooltip is rendered on the main window instead od the current window which hosts the kendo button.
 
-## Running unit tests
+## Screenshots
+![Example Image](./screenshots/wrong-position.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Expect behavior
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Sub menus, tooltip,.. (popup elements) should be rendered and appended to closest 'body' element of the kendo menus, kendo buttons.
