@@ -1,0 +1,6 @@
+<button kendoButton (click)="openPortal()" kendoTooltip title="Open the portal">Open the portal</button>
+<window *ngIf="showPortal" title="Sample portal" (close)="closePortal()">
+    <h2>New window</h2>
+    <kendo-menu appAppendToClosestBody [items]="items" kendoTooltip title="Sample tooltip"></kendo-menu>
+    <button kendoButton (click)="closePortal()">Close</button>
+</window>
